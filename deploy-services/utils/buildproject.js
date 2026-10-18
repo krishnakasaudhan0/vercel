@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execFile } from "child_process";
 import { promisify } from "util";
+import checkType from "./checkProjectType";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +13,12 @@ const localFilesPath = path.join(__dirname, '..');
 
 const execFileAsync = promisify(execFile);
 
+
+
+
+
 export async function buildProject(id) {
+
     console.log("Starting build...");
     const projectPath=`${localFilesPath}/s3files/${id}`
     if(!fs.existsSync(projectPath)){
@@ -48,10 +54,15 @@ export async function buildProject(id) {
         }
 
         console.log("Build completed!");
+        const type=checkType(id)
+        if(type=="vite" ){
+            return `${projectPath}/dist`;
+
+        }
+        return `${projectPath}/build`;
 
         // For Vite/React projects
-        return `${projectPath}/dist`;
-
+        
     } catch (error) {
         console.error("Build failed:");
 

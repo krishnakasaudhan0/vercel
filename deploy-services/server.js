@@ -15,7 +15,11 @@ const worker = new Worker(
   async (job) => {
     await downloadS3Folder(job.data.id)
     console.log("downloaded ",job.data.id);
+    const type = await checkType(job.data.id)
+    if(type==="vite" || type==="cra"){
     await buildProject(job.data.id)
+    }
+    
     console.log("built ",job.data.id);
     await uploadDist(job.data.id)
     console.log("uploaded dist to s3 ",job.data.id);
