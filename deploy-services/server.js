@@ -19,6 +19,7 @@ const worker = new Worker(
     console.log("built ",job.data.id);
     await uploadDist(job.data.id)
     console.log("uploaded dist to s3 ",job.data.id);
+    
   },
   { connection },
 );
