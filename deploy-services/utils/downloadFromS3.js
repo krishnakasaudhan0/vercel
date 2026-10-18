@@ -100,4 +100,4 @@ export async function downloadS3Folder(id) {
  // Include the trailing slash
 // const LOCAL_PATH = "./downloads/images";
 
-// downloadS3Folder("2wr5g");
+ downloadS3Folder("2wr5g");
