@@ -5,7 +5,8 @@ import { simpleGit, CleanOptions } from 'simple-git';
 import path from 'path'
 import getAllFiles from './utils/getAllFiles.js';
 import { fileURLToPath } from "url";
-import {uploadFile, uploadFiles} from "./utils/uploadToS3.js"
+import {uploadFiles} from "./utils/uploadToS3.js"
+import {addJobs} from "./utils/queue.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,7 +33,8 @@ app.post('/deploy',async(req,res)=>{
     console.log("uploading to s3")
     const keys = await uploadFiles(files);
     console.log("uploading to s3 done")
-    
+    await  addJobs(folderId)
+    console.log("job added to queue")
     res.json({
         id:folderId,
         success:true

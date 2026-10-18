@@ -15,10 +15,12 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1152.0",
     "@aws-sdk/lib-storage": "^3.1152.0",
+    "bullmq": "^6.3.16",
     "cors": "^2.8.6",
     "dotenv": "^18.0.8",
     "express": "^5.3.0",
     "fs": "^0.0.1-security",
+    "ioredis": "^6.0.0",
     "mime-types": "^3.0.2",
     "multer": "^2.4.0",
     "nodemon": "^3.1.14",
