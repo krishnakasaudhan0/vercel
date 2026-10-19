@@ -19,7 +19,23 @@ take the code from s3 bucket ..build in inside a docker container and upload the
   ### Api Endpoints
      take process from the queue (job.data.id)
      download the project from s3
-     send dict folder (output) back to s3
+     build the file 
+        if the build is success full then the response is 
+           {
+               "build_status": "success",
+               "outputPath": "/path/to/project/dist"
+          }
+        if build is failed then it return the potential risk and fix the response is like this
+           {
+                "build_status": "failed",
+                "potential_cause": "The build command executed `npm run build`, but the `package.json` file is missing a \"build\" script...",
+                "confidence": "high",
+                "fix": "Open `package.json` and add the `build` command...",
+                "additional_checks": [...]
+            }
+
+
+     send build  folder (output) back to s3
      
 # redirect services - redirect layer
 fetch the id from the url ..redirect to the s3 
