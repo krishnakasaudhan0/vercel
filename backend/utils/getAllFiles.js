@@ -23,6 +23,4 @@ export default function getAllFiles(folderPath) {
     return response; // 3. Return the array containing all paths
 }
 
-// Example usage:
-const files = getAllFiles('/Users/krishnakasaudhan/vercel/backend/github-repos/1792254495555');
-console.log(files);
+

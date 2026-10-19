@@ -34,9 +34,3 @@ export async function uploadFiles(files, concurrency = 10) {
   }
   return keys;
 }
-
-const testFiles=['/Users/krishnakasaudhan/vercel/backend/github-repos/1792254495555/.git/hooks/pre-applypatch.sample',
-  '/Users/krishnakasaudhan/vercel/backend/github-repos/1792254495555/.git/hooks/pre-commit.sample']
-
-  const keys = await uploadFiles(testFiles);
-  console.log(keys)

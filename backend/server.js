@@ -16,7 +16,11 @@ simpleGit().clean(CleanOptions.FORCE);
 const app = express()
 
 // using cors
-app.use(cors())
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}))
 app.use(express.json())
 
 // routes
@@ -33,7 +37,12 @@ app.post('/deploy',async(req,res)=>{
     console.log("uploading to s3")
     const keys = await uploadFiles(files);
     console.log("uploading to s3 done")
-    await  addJobs(folderId)
+    
+
+    
+    await addJobs(folderId)
+
+
     console.log("job added to queue")
     res.json({
         id:folderId,

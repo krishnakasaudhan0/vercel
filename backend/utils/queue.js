@@ -17,12 +17,4 @@ export async function addJobs(id) {
   console.log(`Job added: ${id}`);
 }
 
-try {
-  await addJobs("adsfad");
-  await addJobs("adfad");
-} catch (error) {
-  console.error("Failed to add jobs:", error);
-} finally {
-  await myQueue.close();
-  await connection.quit();
-}
+
